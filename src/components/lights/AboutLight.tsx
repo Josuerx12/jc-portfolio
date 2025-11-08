@@ -6,7 +6,7 @@ const AboutLight = () => {
     <motion.div
       className="-z-10
           absolute pointer-events-none rounded-full mix-blend-screen
-          bg-[radial-gradient(circle_at_center,theme(colors.secondary.DEFAULT)_0%,transparent_70%)]
+          bg-[radial-gradient(circle_at_center,var(--color-secondary)_0%,transparent_70%)]
           blur-2xl opacity-20
           sm:w-[500px] sm:h-[500px] sm:top-[200px] sm:-left-[150px]
           md:w-[800px] md:h-[800px] md:top-[400px] md:-left-[300px]

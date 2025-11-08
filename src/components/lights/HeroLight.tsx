@@ -7,7 +7,7 @@ const HeroLight = () => {
     <motion.div
       className="
           absolute pointer-events-none rounded-full
-          bg-[radial-gradient(circle_at_center,theme(colors.primary.DEFAULT)_0%,transparent_70%)]
+          bg-[radial-gradient(circle_at_center,var(--color-primary)_0%,transparent_70%)]
           blur-3xl opacity-30
           w-[600px] h-[600px] -top-[200px] -right-[200px]
           sm:w-[800px] sm:h-[400px] sm:-top-[300px] sm:-right-[300px]
