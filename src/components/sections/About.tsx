@@ -21,7 +21,7 @@ const About = () => {
   return (
     <section
       id="sobre-mim"
-      className="flex z-20 justify-around bg-neutral py-20 flex-wrap-reverse md:flex-nowrap gap-6"
+      className="flex z-20 justify-around items-center bg-neutral py-20 flex-wrap-reverse md:flex-nowrap gap-6"
     >
       <AboutLight />
       <motion.div
