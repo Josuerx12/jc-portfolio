@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React from "react";
 
 export interface ButtonCTAProps
@@ -21,12 +22,14 @@ const ButtonCTA = ({
       : "border border-primary hover:bg-primary/80";
 
   return (
-    <button
-      {...otherProps}
-      className={`${baseStyles} ${roundedStyles} ${variantStyles} ${
-        className || ""
-      }`}
-    />
+    <motion.div whileTap={{ scale: 0.95 }}>
+      <button
+        {...otherProps}
+        className={`${baseStyles} ${roundedStyles} ${variantStyles} ${
+          className || ""
+        }`}
+      />{" "}
+    </motion.div>
   );
 };
 

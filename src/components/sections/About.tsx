@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import AboutLight from "../lights/AboutLight";
 import { useScroll } from "@/hooks/useScroll";
+import Link from "next/link";
 
 const fadeIn = (direction = "up", delay = 0) =>
   ({
@@ -17,7 +18,7 @@ const fadeIn = (direction = "up", delay = 0) =>
       x: 0,
       y: 0,
       transition: {
-        duration: 0.3,
+        duration: 0.4,
         delay,
         ease: "easeOut",
         type: "spring",
@@ -37,10 +38,8 @@ const About = () => {
   return (
     <section
       id="sobre-mim"
-      className="relative flex min-h-screen flex-wrap-reverse md:flex-nowrap justify-around items-center py-20 gap-10 bg-neutral text-foreground overflow-hidden"
+      className="relative flex min-h-screen flex-wrap-reverse md:flex-nowrap justify-around items-center py-20 gap-10 bg-linear-to-br from-neutral via-neutral/90 to-background text-foreground overflow-hidden"
     >
-      <AboutLight />
-
       <motion.div
         ref={refLeft}
         className="w-full lg:max-w-6/12 flex justify-center items-center"
@@ -61,7 +60,7 @@ const About = () => {
             width={600}
             height={400}
             className="hidden md:block rounded-xl lg:w-[500px] md:w-[400px] object-cover"
-            alt="Sobre mim"
+            alt="Sobre Josué Carvalho"
           />
 
           <motion.div
@@ -86,7 +85,7 @@ const About = () => {
         initial="hidden"
         animate={isInViewRight ? "visible" : "hidden"}
       >
-        <div className="text-center md:text-left">
+        <div className="text-justify">
           <h2 className="text-3xl mb-6 font-bold text-secondary">Sobre Mim</h2>
 
           <p className="text-base leading-relaxed text-muted-foreground">
@@ -94,13 +93,20 @@ const About = () => {
             <span className="font-semibold text-secondary">
               desenvolvedor fullstack
             </span>{" "}
-            apaixonado por{" "}
-            <span className="font-semibold text-secondary">
-              criar soluções inovadoras e eficientes
-            </span>
-            . Com experiência em tecnologias modernas, estou sempre em busca de
-            novos desafios e oportunidades de aprendizado para construir
-            experiências digitais impactantes.
+            com foco em entregar soluções robustas e escaláveis para empresas
+            que valorizam performance e qualidade técnica. Ao longo dos últimos
+            anos, venho aperfeiçoando minha expertise com{" "}
+            <span className="font-semibold text-secondary">NestJS</span>,{" "}
+            <span className="font-semibold text-secondary">Next.js</span> e{" "}
+            <span className="font-semibold text-secondary">AWS</span>, sempre
+            priorizando boas práticas, arquitetura limpa e resultados
+            consistentes.
+            <br />
+            <br />
+            Minha missão é transformar complexidade em simplicidade —
+            desenvolvendo sistemas que unem eficiência, design inteligente e
+            impacto real para quem utiliza. Cada linha de código é pensada para
+            escalar, evoluir e gerar valor no longo prazo.
           </p>
         </div>
 
@@ -114,7 +120,7 @@ const About = () => {
         >
           {[
             "🚀 Desenvolvedor Fullstack",
-            "🧠 Código Limpo",
+            "🧠 Arquitetura Limpa",
             "☁️ AWS & Cloud",
             "💼 +4 anos de experiência",
           ].map((item, i) => (
@@ -123,9 +129,9 @@ const About = () => {
               variants={fadeIn("up", i * 0.1)}
               whileHover={{
                 scale: 1.05,
-                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                backgroundColor: "rgba(255, 255, 255, 0.08)",
               }}
-              className="border border-accent text-center font-medium rounded-full px-5 py-3 backdrop-blur-sm cursor-default transition-colors duration-300 hover:bg-accent/70"
+              className="border border-accent text-center font-medium rounded-full px-5 py-3 backdrop-blur-sm cursor-default transition-all duration-300 hover:border-secondary"
             >
               {item}
             </motion.li>
@@ -136,17 +142,22 @@ const About = () => {
           variants={fadeIn("up", 0.6)}
           className="text-center mt-6 italic text-muted-foreground"
         >
-          Estou sempre aberto a novas oportunidades e projetos. Se você deseja
-          criar algo incrível, entre em contato comigo!
+          Se você busca um parceiro técnico para tirar sua ideia do papel,{" "}
+          <Link
+            href={"/contato"}
+            className="text-accent underline cursor-pointer hover:text-accent/80"
+          >
+            vamos conversar!
+          </Link>
         </motion.p>
 
         <motion.div variants={fadeIn("up", 0.8)} className="text-center mt-4">
           <p className="italic mb-2">Quer conhecer meus serviços?</p>
           <button
             onClick={handleScrollToServices}
-            className="text-accent font-semibold hover:underline tracking-wide animate-pulse"
+            className="text-primary cursor-pointer font-semibold hover:underline tracking-wide animate-pulse"
           >
-            Meus Serviços
+            Clique aqui.
           </button>
         </motion.div>
       </motion.div>

@@ -5,6 +5,7 @@ import ButtonCTA from "../button/CTA";
 import Image from "next/image";
 import { ArrowDown } from "lucide-react";
 import { useScroll } from "@/hooks/useScroll";
+import Link from "next/link";
 
 const textVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -28,6 +29,7 @@ const Hero = () => {
   const { scrollTo } = useScroll();
 
   const handleScrollToAbout = () => scrollTo("#sobre-mim");
+  const handleScrollToPortfolio = () => scrollTo("#portfolio");
 
   return (
     <section className="flex min-h-screen flex-wrap-reverse items-center justify-around px-10 md:px-20 lg:px-40 overflow-hidden">
@@ -39,7 +41,7 @@ const Hero = () => {
       >
         <motion.div variants={textVariants} custom={0.1}>
           <h1 className="mt-6 lg:mt-0 text-lg lg:text-3xl font-bold leading-tight">
-            Transformo ideias em experiências digitais modernas.
+            Transformo ideias em experiências digitais modernas e escaláveis.
           </h1>
         </motion.div>
 
@@ -48,22 +50,39 @@ const Hero = () => {
           variants={textVariants}
           custom={0.3}
         >
-          Sou Josué Carvalho (JCDEV), desenvolvedor fullstack especializado em
-          soluções escaláveis com foco em performance e design.
+          Sou <strong className="text-primary uppercase">Josué Carvalho</strong>
+          , desenvolvedor fullstack apaixonado por criar soluções eficientes e
+          de alta performance utilizando
+          <strong className="text-primary"> NestJS</strong>,{" "}
+          <strong className="text-primary">Next.js</strong> e{" "}
+          <strong className="text-primary">AWS</strong>. Meu foco é entregar
+          produtos digitais que unem{" "}
+          <strong className="text-secondary uppercase">design, </strong>
+          <strong className="text-secondary uppercase">
+            tecnologia
+          </strong> e{" "}
+          <strong className="text-secondary uppercase">resultado</strong>.
         </motion.p>
 
-        <motion.div
-          className="flex gap-2 flex-wrap mt-4"
-          variants={textVariants}
-          custom={0.5}
-        >
-          <ButtonCTA variant="secondary" className="w-full md:w-fit" rounded>
-            Solicitar um projeto
-          </ButtonCTA>
-          <ButtonCTA variant="primary" className="w-full md:w-fit" rounded>
-            Ver Portfólio
-          </ButtonCTA>
-        </motion.div>
+        <div className="flex gap-2 flex-wrap mt-4">
+          <motion.div variants={textVariants} custom={0.3}>
+            <Link href={"/contato"}>
+              <ButtonCTA variant="primary" className="w-full md:w-fit" rounded>
+                Solicitar um projeto
+              </ButtonCTA>
+            </Link>
+          </motion.div>
+          <motion.div variants={textVariants} custom={0.3}>
+            <ButtonCTA
+              onClick={handleScrollToPortfolio}
+              variant="secondary"
+              className="w-full md:w-fit"
+              rounded
+            >
+              Ver Portfólio
+            </ButtonCTA>
+          </motion.div>
+        </div>
 
         <motion.button
           variants={textVariants}
