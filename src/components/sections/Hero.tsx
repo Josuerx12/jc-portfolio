@@ -7,13 +7,13 @@ import { ArrowDown } from "lucide-react";
 import { useScroll } from "@/hooks/useScroll";
 
 const textVariants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 20 },
   visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
     transition: {
       delay,
-      duration: 0.7,
+      duration: 0.3,
       ease: "easeOut",
       type: "spring",
     },
@@ -23,8 +23,8 @@ const textVariants = {
 const Hero = () => {
   const refLeft = useRef(null);
   const refRight = useRef(null);
-  const isInViewLeft = useInView(refLeft, { once: false, amount: 0.2 });
-  const isInViewRight = useInView(refRight, { once: false, amount: 0.2 });
+  const isInViewLeft = useInView(refLeft, { once: true, amount: 0.2 });
+  const isInViewRight = useInView(refRight, { once: true, amount: 0.2 });
   const { scrollTo } = useScroll();
 
   const handleScrollToAbout = () => scrollTo("#sobre-mim");
@@ -38,7 +38,7 @@ const Hero = () => {
         animate={isInViewLeft ? "visible" : "hidden"}
       >
         <motion.div variants={textVariants} custom={0.1}>
-          <h1 className="text-lg lg:text-3xl font-bold leading-tight">
+          <h1 className="mt-6 lg:mt-0 text-lg lg:text-3xl font-bold leading-tight">
             Transformo ideias em experiências digitais modernas.
           </h1>
         </motion.div>

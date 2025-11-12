@@ -9,15 +9,15 @@ const fadeIn = (direction = "up", delay = 0) =>
   ({
     hidden: {
       opacity: 0,
-      y: direction === "up" ? 40 : direction === "down" ? -40 : 0,
-      x: direction === "left" ? -60 : direction === "right" ? 60 : 0,
+      y: direction === "up" ? 20 : direction === "down" ? -20 : 0,
+      x: direction === "left" ? -20 : direction === "right" ? 20 : 0,
     },
     visible: {
       opacity: 1,
       x: 0,
       y: 0,
       transition: {
-        duration: 0.7,
+        duration: 0.3,
         delay,
         ease: "easeOut",
         type: "spring",
@@ -28,8 +28,8 @@ const fadeIn = (direction = "up", delay = 0) =>
 const About = () => {
   const refLeft = useRef(null);
   const refRight = useRef(null);
-  const isInViewLeft = useInView(refLeft, { once: false, amount: 0.2 });
-  const isInViewRight = useInView(refRight, { once: false, amount: 0.2 });
+  const isInViewLeft = useInView(refLeft, { once: true, amount: 0.2 });
+  const isInViewRight = useInView(refRight, { once: true, amount: 0.2 });
   const { scrollTo } = useScroll();
 
   const handleScrollToServices = () => scrollTo("#servicos");
@@ -37,7 +37,7 @@ const About = () => {
   return (
     <section
       id="sobre-mim"
-      className="relative flex flex-wrap-reverse md:flex-nowrap justify-around items-center py-20 gap-10 bg-neutral text-foreground overflow-hidden"
+      className="relative flex min-h-screen flex-wrap-reverse md:flex-nowrap justify-around items-center py-20 gap-10 bg-neutral text-foreground overflow-hidden"
     >
       <AboutLight />
 

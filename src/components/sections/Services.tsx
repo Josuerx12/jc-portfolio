@@ -14,11 +14,11 @@ const Services = () => {
   };
 
   const item = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.3, ease: "easeOut" },
     },
   } as any;
 
@@ -31,7 +31,7 @@ const Services = () => {
         className="text-2xl text-center font-bold"
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         Nossos Serviços
@@ -43,7 +43,7 @@ const Services = () => {
         variants={container}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.3 }}
       >
         {/* Card 1 */}
         <motion.div
@@ -122,10 +122,10 @@ const Services = () => {
 
       <motion.div
         className="mt-20 max-w-2xl text-center"
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.2 }}
-        transition={{ duration: 0.8 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <h4 className="font-semibold text-lg">
           Entre em contato para discutir como posso ajudar no seu próximo
