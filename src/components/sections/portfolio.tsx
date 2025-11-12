@@ -3,6 +3,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -44,9 +45,16 @@ const PortfolioSection = () => {
   return (
     <section
       id="portfolio"
-      className="py-20 min-h-screen flex flex-col justify-between px-6 md:px-20 bg-background"
+      className="py-20 min-h-screen flex flex-col justify-between px-6 md:px-20 bg-background relative overflow-hidden"
     >
-      <div className="text-center mb-10">
+      {/* Cabeçalho animado */}
+      <motion.div
+        className="text-center mb-10"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
         <h2 className="text-3xl font-bold mb-2 text-foreground">
           Projetos em Destaque
         </h2>
@@ -54,9 +62,15 @@ const PortfolioSection = () => {
           Alguns dos projetos que refletem minha paixão por performance, design
           e boas práticas.
         </p>
-      </div>
+      </motion.div>
 
-      <div>
+      {/* Swiper animado */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.97 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           slidesPerView={1}
@@ -73,46 +87,65 @@ const PortfolioSection = () => {
         >
           {projects.map((project, index) => (
             <SwiperSlide key={index}>
-              <div className="relative group bg-card rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 min-h-[400px] flex flex-col">
-                <div className="absolute inset-0 z-10 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.99 }}
+                transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                className="relative group bg-card rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 min-h-[420px] flex flex-col"
+              >
+                <div className="absolute inset-0 z-10 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[1px]">
                   <Link
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-white bg-accent/80 hover:bg-accent px-4 py-2 rounded-full transition-all"
+                    className="flex items-center gap-2 text-white bg-accent/90 hover:bg-accent px-4 py-2 rounded-full transition-all"
                   >
                     <ExternalLink size={18} />
                     Ver Projeto
                   </Link>
                 </div>
 
-                <div className="relative w-full h-48 overflow-hidden">
+                <motion.div
+                  className="relative w-full h-48 overflow-hidden"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover"
                   />
-                </div>
+                </motion.div>
 
-                <div className="p-5 flex-1 flex flex-col">
-                  <h3 className="text-xl font-semibold text-foreground mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm line-clamp-3">
-                    {project.description}
-                  </p>
+                <div className="p-5 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm line-clamp-3">
+                      {project.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             </SwiperSlide>
           ))}
         </Swiper>
-      </div>
+      </motion.div>
 
-      <div className="flex justify-center">
+      <motion.div
+        className="flex justify-center mt-10"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        viewport={{ once: true }}
+      >
         <Link href="/portfolio">
           <ButtonCTA>Ver Portfólio Completo</ButtonCTA>
         </Link>
-      </div>
+      </motion.div>
+
+      <div className="absolute inset-0 pointer-events-none bg-linear-to-t from-background/30 via-transparent to-background/30"></div>
     </section>
   );
 };
