@@ -5,6 +5,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import { motion } from "framer-motion";
 import "swiper/css";
 import "swiper/css/pagination";
+import { useScroll } from "@/hooks/useScroll";
 
 const clients = [
   {
@@ -22,6 +23,10 @@ const clients = [
 ];
 
 const ClientsSection = () => {
+  const { scrollTo } = useScroll();
+
+  const handleScrollToPortfolio = () => scrollTo("#portfolio");
+
   return (
     <section
       id="clients"
@@ -88,6 +93,24 @@ const ClientsSection = () => {
       </motion.div>
 
       <div className="absolute inset-0 pointer-events-none bg-linear-to-t from-background/40 via-transparent to-background/40"></div>
+
+      <motion.div
+        className="relative z-10 mt-16 max-w-2xl mx-auto text-center"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <p className="text-muted-foreground text-lg mb-4">
+          Quer ver o resultado desse trabalho na prática?
+        </p>
+        <button
+          onClick={handleScrollToPortfolio}
+          className="text-accent text-xl font-semibold hover:underline inline-flex items-center gap-2 transition-all hover:gap-3"
+        >
+          Confira meus projetos →
+        </button>
+      </motion.div>
     </section>
   );
 };

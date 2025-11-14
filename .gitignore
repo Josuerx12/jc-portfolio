@@ -47,3 +47,4 @@ public/sitemap-*.xml.gz
 
 # Ignorar robots.txt gerado automaticamente
 public/robots.txt
+/src/generated/prisma

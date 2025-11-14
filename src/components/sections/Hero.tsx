@@ -39,7 +39,6 @@ const Hero = () => {
         initial="hidden"
         animate={isInViewLeft ? "visible" : "hidden"}
       >
-        {/* Headline Principal */}
         <motion.div variants={textVariants} custom={0.1}>
           <h1 className="mt-6 lg:mt-0 text-2xl lg:text-4xl font-bold leading-tight">
             Construo Sistemas que <span className="text-primary">Escalam</span>,{" "}
@@ -48,7 +47,6 @@ const Hero = () => {
           </h1>
         </motion.div>
 
-        {/* Subheadline */}
         <motion.p
           className="text-base lg:text-lg font-medium text-muted-foreground"
           variants={textVariants}
@@ -58,7 +56,6 @@ const Hero = () => {
           performance
         </motion.p>
 
-        {/* Stats */}
         <motion.div
           className="flex gap-4 justify-center md:justify-start flex-wrap mt-2"
           variants={textVariants}
@@ -103,14 +100,16 @@ const Hero = () => {
             variants={textVariants}
             custom={0.6}
           >
-            <ButtonCTA
-              variant="primary"
-              rounded
-              className="w-full md:w-fit gap-2"
-            >
-              <Mail size={18} />
-              Solicitar Orçamento
-            </ButtonCTA>
+            <Link href={"/contato"}>
+              <ButtonCTA
+                variant="primary"
+                rounded
+                className="w-full md:w-fit gap-2"
+              >
+                <Mail size={18} />
+                Solicitar Orçamento
+              </ButtonCTA>
+            </Link>
           </motion.div>
           <motion.div
             className="w-full md:w-fit"
