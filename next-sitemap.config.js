@@ -8,8 +8,11 @@ module.exports = {
   exclude: ["/404", "/500"],
   robotsTxtOptions: {
     policies: [
-      { userAgent: "*", allow: "/" },
-      { userAgent: "*", disallow: ["/404", "/500"] },
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/404", "/500"],
+      },
     ],
   },
 };
