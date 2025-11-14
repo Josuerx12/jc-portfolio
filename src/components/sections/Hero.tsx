@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import ButtonCTA from "../button/CTA";
 import Image from "next/image";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { useScroll } from "@/hooks/useScroll";
 import Link from "next/link";
 
@@ -39,55 +39,122 @@ const Hero = () => {
         initial="hidden"
         animate={isInViewLeft ? "visible" : "hidden"}
       >
+        {/* Headline Principal */}
         <motion.div variants={textVariants} custom={0.1}>
-          <h1 className="mt-6 lg:mt-0 text-lg lg:text-3xl font-bold leading-tight">
-            Transformo ideias em experiências digitais modernas e escaláveis.
+          <h1 className="mt-6 lg:mt-0 text-2xl lg:text-4xl font-bold leading-tight">
+            Construo Sistemas que <span className="text-primary">Escalam</span>,{" "}
+            <span className="text-secondary">Performam</span> e{" "}
+            <span className="text-accent">Geram Resultados</span>
           </h1>
         </motion.div>
 
+        {/* Subheadline */}
         <motion.p
-          className="italic mt-4 text-sm lg:text-base text-muted-foreground"
+          className="text-base lg:text-lg font-medium text-muted-foreground"
+          variants={textVariants}
+          custom={0.2}
+        >
+          Desenvolvedor Fullstack especializado em arquitetura escalável e alta
+          performance
+        </motion.p>
+
+        {/* Stats */}
+        <motion.div
+          className="flex gap-4 justify-center md:justify-start flex-wrap mt-2"
           variants={textVariants}
           custom={0.3}
         >
-          Sou <strong className="text-primary uppercase">Josué Carvalho</strong>
-          , desenvolvedor fullstack apaixonado por criar soluções eficientes e
-          de alta performance utilizando
-          <strong className="text-primary"> NestJS</strong>,{" "}
-          <strong className="text-primary">Next.js</strong> e{" "}
-          <strong className="text-primary">AWS</strong>. Meu foco é entregar
-          produtos digitais que unem{" "}
-          <strong className="text-secondary uppercase">design, </strong>
-          <strong className="text-secondary uppercase">
-            tecnologia
-          </strong> e{" "}
-          <strong className="text-secondary uppercase">resultado</strong>.
-        </motion.p>
+          {[
+            { label: "anos", value: "3+" },
+            { label: "projetos", value: "10+" },
+            { label: "clientes", value: "10+" },
+          ].map((stat, i) => (
+            <div key={i} className="flex flex-col items-center">
+              <span className="text-2xl font-bold text-primary">
+                {stat.value}
+              </span>
+              <span className="text-xs text-muted-foreground uppercase tracking-wide">
+                {stat.label}
+              </span>
+            </div>
+          ))}
+        </motion.div>
 
-        <div className="flex gap-2 flex-wrap mt-4">
-          <motion.div variants={textVariants} custom={0.3}>
-            <Link href={"/contato"}>
-              <ButtonCTA variant="primary" className="w-full md:w-fit" rounded>
-                Solicitar um projeto
-              </ButtonCTA>
-            </Link>
+        <motion.div
+          className="flex gap-3 justify-center md:justify-start flex-wrap mt-4"
+          variants={textVariants}
+          custom={0.4}
+        >
+          {["⚡ Performance", "🔒 Segurança", "📈 Escalabilidade"].map(
+            (benefit, i) => (
+              <span
+                key={i}
+                className="px-4 py-2 bg-neutral/50 border border-neutral-700 rounded-full text-sm font-medium"
+              >
+                {benefit}
+              </span>
+            )
+          )}
+        </motion.div>
+
+        <div className="flex flex-wrap gap-3 w-full">
+          <motion.div
+            className="w-full md:w-fit"
+            variants={textVariants}
+            custom={0.6}
+          >
+            <ButtonCTA
+              variant="primary"
+              rounded
+              className="w-full md:w-fit gap-2"
+            >
+              <Mail size={18} />
+              Solicitar Orçamento
+            </ButtonCTA>
           </motion.div>
-          <motion.div variants={textVariants} custom={0.3}>
+          <motion.div
+            className="w-full md:w-fit"
+            variants={textVariants}
+            custom={0.6}
+          >
             <ButtonCTA
               onClick={handleScrollToPortfolio}
               variant="secondary"
               className="w-full md:w-fit"
               rounded
             >
-              Ver Portfólio
+              Ver Projetos
             </ButtonCTA>
           </motion.div>
         </div>
 
-        <motion.button
+        <motion.div
+          className="flex justify-center md:justify-start gap-4 mt-4"
           variants={textVariants}
           custom={0.7}
-          className="hidden md:flex z-30 cursor-pointer animate-bounce mx-auto items-center gap-2 w-fit mt-20 font-medium hover:underline"
+        >
+          <Link
+            href="https://github.com/Josuerx12"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 bg-neutral/50 hover:bg-neutral/70 border border-neutral-700 rounded-full transition-all hover:scale-110"
+          >
+            <Github size={20} />
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/josueaze12"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 bg-neutral/50 hover:bg-neutral/70 border border-neutral-700 rounded-full transition-all hover:scale-110"
+          >
+            <Linkedin size={20} />
+          </Link>
+        </motion.div>
+
+        <motion.button
+          variants={textVariants}
+          custom={0.8}
+          className="hidden md:flex z-30 cursor-pointer animate-bounce mx-auto items-center gap-2 w-fit mt-12 font-medium hover:underline"
           onClick={handleScrollToAbout}
         >
           Veja mais sobre mim <ArrowDown />
