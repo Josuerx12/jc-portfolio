@@ -85,79 +85,146 @@ const About = () => {
         initial="hidden"
         animate={isInViewRight ? "visible" : "hidden"}
       >
-        <div className="text-justify">
-          <h2 className="text-3xl mb-6 font-bold text-secondary">Sobre Mim</h2>
+        <div>
+          <h2 className="text-3xl mb-6 font-bold text-secondary">
+            Minha Jornada
+          </h2>
 
-          <p className="text-base leading-relaxed text-muted-foreground">
-            Sou um{" "}
+          <p className="text-base leading-relaxed text-muted-foreground text-justify">
+            Minha trajetória na tecnologia começou com a curiosidade de entender
+            como as coisas funcionam por trás das telas. Ao longo de{" "}
+            <span className="font-semibold text-primary">mais de 3 anos</span>{" "}
+            de experiência, transformei essa curiosidade em uma{" "}
             <span className="font-semibold text-secondary">
-              desenvolvedor fullstack
+              carreira sólida
+            </span>
+            , construindo desde MVPs até sistemas complexos em produção.
+            <br />
+            <br />
+            Hoje, trabalho com uma abordagem que vai além do código: busco{" "}
+            <span className="font-semibold text-accent">
+              entender o problema real
+            </span>
+            , propor a melhor solução técnica e entregar com qualidade. Cada
+            projeto é uma oportunidade de criar algo que faça diferença —
+            priorizando sempre{" "}
+            <span className="font-semibold text-primary">código limpo</span>,{" "}
+            <span className="font-semibold text-primary">
+              documentação clara
             </span>{" "}
-            com foco em entregar soluções robustas e escaláveis para empresas
-            que valorizam performance e qualidade técnica. Ao longo dos últimos
-            anos, venho aperfeiçoando minha expertise com{" "}
-            <span className="font-semibold text-secondary">NestJS</span>,{" "}
-            <span className="font-semibold text-secondary">Next.js</span> e{" "}
-            <span className="font-semibold text-secondary">AWS</span>, sempre
-            priorizando boas práticas, arquitetura limpa e resultados
-            consistentes.
-            <br />
-            <br />
-            Minha missão é transformar complexidade em simplicidade —
-            desenvolvendo sistemas que unem eficiência, design inteligente e
-            impacto real para quem utiliza. Cada linha de código é pensada para
-            escalar, evoluir e gerar valor no longo prazo.
+            e{" "}
+            <span className="font-semibold text-primary">
+              comunicação eficiente
+            </span>
+            .
           </p>
         </div>
 
-        <motion.ul
-          className="grid md:grid-cols-2 gap-4"
-          variants={{
-            visible: {
-              transition: { staggerChildren: 0.1 },
-            },
-          }}
+        <div>
+          <h3 className="text-xl font-semibold  text-secondary mb-4">
+            Como Trabalho
+          </h3>
+          <div className="grid gap-3">
+            {[
+              {
+                emoji: "🎯",
+                text: "Entendimento do problema antes de propor soluções",
+              },
+              {
+                emoji: "🧩",
+                text: "Arquitetura pensada para escalar e evoluir",
+              },
+              {
+                emoji: "💬",
+                text: "Comunicação constante durante todo o projeto",
+              },
+              {
+                emoji: "✅",
+                text: "Testes, documentação e código revisado",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                variants={fadeIn("up", i * 0.1)}
+                className="flex items-center gap-3 text-muted-foreground"
+              >
+                <span className="text-xl">{item.emoji}</span>
+                <span className="text-sm leading-relaxed">{item.text}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-secondary mb-4">
+            Stack Técnica
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {[
+              { name: "TypeScript", color: "text-blue-400" },
+              { name: "Next.js", color: "text-white" },
+              { name: "React", color: "text-cyan-400" },
+              { name: "Vue.js", color: "text-green-400" },
+              { name: "NestJS", color: "text-red-400" },
+              { name: "Laravel", color: "text-red-500" },
+              { name: "Node.js", color: "text-green-500" },
+              { name: "PostgreSQL", color: "text-blue-500" },
+              { name: "MongoDB", color: "text-green-600" },
+              { name: "Redis", color: "text-red-500" },
+              { name: "AWS", color: "text-orange-400" },
+              { name: "Docker", color: "text-blue-400" },
+              { name: "Git", color: "text-orange-500" },
+              { name: "Prisma", color: "text-slate-300" },
+            ].map((tech, i) => (
+              <motion.span
+                key={i}
+                variants={fadeIn("up", i * 0.05)}
+                whileHover={{
+                  scale: 1.1,
+                  backgroundColor: "rgba(255, 255, 255, 0.1)",
+                }}
+                className={`${tech.color} px-3 py-1.5 bg-neutral/40 border border-neutral-700 rounded-lg text-xs font-medium cursor-default transition-all hover:border-accent`}
+              >
+                {tech.name}
+              </motion.span>
+            ))}
+          </div>
+        </div>
+
+        <motion.div
+          variants={fadeIn("up", 0.6)}
+          className="bg-card/30 border border-accent/30 rounded-xl p-5"
         >
-          {[
-            "🚀 Desenvolvedor Fullstack",
-            "🧠 Arquitetura Limpa",
-            "☁️ AWS & Cloud",
-            "💼 +4 anos de experiência",
-          ].map((item, i) => (
-            <motion.li
-              key={i}
-              variants={fadeIn("up", i * 0.1)}
-              whileHover={{
-                scale: 1.05,
-                backgroundColor: "rgba(255, 255, 255, 0.08)",
-              }}
-              className="border border-accent text-center font-medium rounded-full px-5 py-3 backdrop-blur-sm cursor-default transition-all duration-300 hover:border-secondary"
-            >
-              {item}
-            </motion.li>
-          ))}
-        </motion.ul>
+          <h3 className="text-lg font-semibold text-accent mb-3">
+            💡 Diferenciais
+          </h3>
+          <ul className="space-y-2 text-sm text-muted-foreground text-justify">
+            <li>✓ Código orientado a testes e boas práticas</li>
+            <li>✓ Experiência com microsserviços e APIs escaláveis</li>
+            <li>✓ Deploy e infraestrutura cloud (AWS)</li>
+            <li>✓ Foco em DX (Developer Experience) e código legível</li>
+          </ul>
+        </motion.div>
 
         <motion.p
-          variants={fadeIn("up", 0.6)}
+          variants={fadeIn("up", 0.7)}
           className="text-center mt-6 italic text-muted-foreground"
         >
-          Se você busca um parceiro técnico para tirar sua ideia do papel,{" "}
+          Quer transformar sua ideia em realidade?{" "}
           <Link
             href={"/contato"}
-            className="text-accent underline cursor-pointer hover:text-accent/80"
+            className="text-accent underline cursor-pointer hover:text-accent/80 font-semibold"
           >
-            vamos conversar!
+            Vamos conversar!
           </Link>
         </motion.p>
 
         <motion.div variants={fadeIn("up", 0.8)} className="text-center mt-4">
-          <p className="italic mb-2">Quer conhecer meus serviços?</p>
           <button
             onClick={handleScrollToServices}
-            className="text-primary cursor-pointer font-semibold hover:underline tracking-wide animate-pulse"
+            className="text-primary cursor-pointer font-semibold hover:underline tracking-wide transition-all hover:scale-105"
           >
-            Clique aqui.
+            Ver meus serviços →
           </button>
         </motion.div>
       </motion.div>
