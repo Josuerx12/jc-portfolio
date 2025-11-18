@@ -119,7 +119,8 @@ export default function RootLayout({
               name: "Josué Carvalho",
               alternateName: "JC DEV",
               url: "https://jcdev.com.br",
-              image: "https://jcdev.com.br/profile.png",
+              image:
+                "https://www.jcdev.com.br/_next/image?url=%2Fprofile.png&w=640&q=75",
               jobTitle: "Desenvolvedor Full Stack",
               sameAs: [
                 "https://github.com/Josuerx12",
